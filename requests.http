@@ -1,0 +1,54 @@
+@BaseUrl= http://localhost:3000/api
+
+###
+GET http://localhost:3000/?id=5
+
+###
+
+GET http://localhost:3000/3
+
+###
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "name":"oguz",
+    "age":22
+}
+
+###
+GET {{BaseUrl}}/users
+
+###
+GET {{BaseUrl}}/users/62bf228c9ee86961807a7702
+
+###
+POST {{BaseUrl}}/users
+Content-Type: application/json
+
+{
+    "name":"oguz61",
+    "username":"oguz61",
+    "email": "oguz61@gmail.com",
+    "password":"xyzt"
+}
+###
+POST {{BaseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "email": "oguz61@gil.com",
+    "password":"xzt"
+}
+###
+PATCH  {{BaseUrl}}/users/62c06619d35fbe10001ebe7a
+Content-Type: application/json
+
+{
+    "name":"ozzzy61",
+    "password":"xyzt"
+}
+
+###
+DELETE {{BaseUrl}}/users/62c00dc0e4849876ba80d132
+Content-Type: application/json

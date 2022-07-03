@@ -20,6 +20,12 @@ Content-Type: application/json
 GET {{BaseUrl}}/users
 
 ###
+GET {{BaseUrl}}/users/home
+Content-Type: application/json
+Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmMwNjYxOWQzNWZiZTEwMDAxZWJlN2EiLCJlbWFpbCI6Im9ndXo2MUBnbWFpbC5jb20iLCJpYXQiOjE2NTY3OTM3NjUsImV4cCI6MTY1Njc5NzM2NX0.zOBvDLalQiAMPhdtzQXvCd8AKjG09RsofPcwFZvde8U"
+
+
+###
 GET {{BaseUrl}}/users/62bf228c9ee86961807a7702
 
 ###
@@ -27,9 +33,9 @@ POST {{BaseUrl}}/users
 Content-Type: application/json
 
 {
-    "name":"oguz61",
-    "username":"oguz61",
-    "email": "oguz61@gmail.com",
+    "name":"oguz611111",
+    "username":"oguz611111",
+    "email": "oguz611111@gmail.com",
     "password":"xyzt"
 }
 ###
@@ -37,18 +43,20 @@ POST {{BaseUrl}}/users/login
 Content-Type: application/json
 
 {
-    "email": "oguz61@gil.com",
-    "password":"xzt"
+    "email": "oguz61@gmail.com",
+    "password":"axyzt"
 }
 ###
+
 PATCH  {{BaseUrl}}/users/62c06619d35fbe10001ebe7a
 Content-Type: application/json
 
 {
     "name":"ozzzy61",
-    "password":"xyzt"
+    "password":"axyzt"
 }
 
 ###
+
 DELETE {{BaseUrl}}/users/62c00dc0e4849876ba80d132
 Content-Type: application/json

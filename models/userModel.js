@@ -3,6 +3,7 @@ const Schema= mongoose.Schema;
 const  Joi = require("joi");
 const createError=require("http-errors")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 
 const   UserSchema = new Schema({
     name:{
@@ -75,8 +76,10 @@ UserSchema.methods.toJSON = function () {
     return user;
 }
 
-UserSchema.static.generateToken = function(){
-    
+UserSchema.methods.generateToken =async function(){
+    const user=this;
+    const token =await jwt.sign({_id:user.id,email:user.email},"cokgizlianahtar",{expiresIn:"1h"});
+    return token ;
 }
 const User = mongoose.model('User',UserSchema);
 module.exports = User;

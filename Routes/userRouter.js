@@ -4,7 +4,8 @@ const ObjectId = mongoose.Types.ObjectId;
 const router = express.Router();
 const User = require("../models/userModel")
 const createError=require("http-errors")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const auth = require('../Middleware/AuthMiddleware');
 //
 router.get('/',async (req,res,next)=>{
     try{
@@ -20,7 +21,7 @@ router.get('/',async (req,res,next)=>{
     
 })
 
-router.get('/:id',async (req,res,next)=>{
+router.get('/user/:id',async (req,res,next)=>{
 
     try{
         let result = await User.findById({_id:req.params.id});
@@ -39,13 +40,22 @@ router.get('/:id',async (req,res,next)=>{
     }
 })
 
+router.get('/home', auth,  (req,res,next)=>{
+    res.json({
+        message:"succes",
+        data:req.user
+    })
+})
+
 router.post('/login', async(req,res,next )=>{
     try{
         let user = await User.login(req.body.email,req.body.password)
+        let token =await user.generateToken();
+        user
         res.json({
             success:true,
             message:"success login",
-            data:user
+            data:{user,token}
         });
     }catch(e){
         next(e)
@@ -58,15 +68,16 @@ router.post('/',async (req,res,next)=>{
         let userObj =new User(req.body)
         const {error,value}= userObj.joiValidation(req.body)  
         userObj.password= await bcrypt.hash(req.body.password,10)
+       
         if(error){
             console.log("validation error");
             next(createError(404,error.message))
         }else{
             let result = await userObj.save()
             res.json({
+                success:true,
                 message:"success user creation",
                 data:result
-
             });
         }        
     }catch(e){
@@ -78,17 +89,15 @@ router.post('/',async (req,res,next)=>{
 
 router.patch('/:id', async (req,res,next)=>{//run validators olmazsa kuralları atlıyor
     try{
-        let userObj =new User(req.body)
         await User.joiValidationForUserUpdate(req.body)
         
         if(req.body.hasOwnProperty("password")){
-            console.log(userObj.password)
-
             req.body.password= await bcrypt.hash(req.body.password,10)
         }
 
         let result = await User.findByIdAndUpdate({_id :req.params.id},req.body,{new:true ,runValidators:true})
-        
+       
+        console.log(result)
         if(result){
             res.json({
                 success:true,

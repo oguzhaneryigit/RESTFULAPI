@@ -18,11 +18,13 @@ Content-Type: application/json
 
 ###
 GET {{BaseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmMxNTcyNzYwZjNhMzExOGM1N2Y5ODMiLCJlbWFpbCI6Im9ndXo2MUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU2ODM4NTI2LCJleHAiOjE2NTY4NDIxMjZ9.xSxXb3oWsoFf73II3-xMn6dPQKhVXmd4K1eKxH2ze3I
 
 ###
 GET {{BaseUrl}}/users/home
 Content-Type: application/json
-Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmMwNjYxOWQzNWZiZTEwMDAxZWJlN2EiLCJlbWFpbCI6Im9ndXo2MUBnbWFpbC5jb20iLCJpYXQiOjE2NTY3OTM3NjUsImV4cCI6MTY1Njc5NzM2NX0.zOBvDLalQiAMPhdtzQXvCd8AKjG09RsofPcwFZvde8U"
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmMxNTcyNzYwZjNhMzExOGM1N2Y5ODMiLCJlbWFpbCI6Im9ndXo2MUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU2ODM4MTEzLCJleHAiOjE2NTY4NDE3MTN9.DVTWa3E5ZC2FihEDtYW3pNckILufSw0dV_onTLBSFZk
 
 
 ###
@@ -33,18 +35,18 @@ POST {{BaseUrl}}/users
 Content-Type: application/json
 
 {
-    "name":"oguz611111",
-    "username":"oguz611111",
-    "email": "oguz611111@gmail.com",
-    "password":"xyzt"
+    "name":"xxxx",
+    "username":"admxxxxin",
+    "email": "x@gmail.com",
+    "password":"admin"
 }
 ###
 POST {{BaseUrl}}/users/login
 Content-Type: application/json
 
 {
-    "email": "oguz61@gmail.com",
-    "password":"axyzt"
+    "email": "admin@gmail.com",
+    "password":"admin"
 }
 ###
 
@@ -58,5 +60,11 @@ Content-Type: application/json
 
 ###
 
-DELETE {{BaseUrl}}/users/62c00dc0e4849876ba80d132
+DELETE {{BaseUrl}}/users/62c15ccafa0d29a9079fdb03
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiX2lkIjoiNjJjMTU4NjY2MGYzYTMxMThjNTdmOThhIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NTY4MzkzOTgsImV4cCI6MTY1Njg0Mjk5OH0.cB_3Ie5xuzoSVG1dBZPpRZtpAYfbY1iYupv5LkPnsU0
+
+###
+DELETE {{BaseUrl}}/users/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmMxNTcyNzYwZjNhMzExOGM1N2Y5ODMiLCJlbWFpbCI6Im9ndXo2MUBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjU2ODM4NTI2LCJleHAiOjE2NTY4NDIxMjZ9.xSxXb3oWsoFf73II3-xMn6dPQKhVXmd4K1eKxH2ze3I

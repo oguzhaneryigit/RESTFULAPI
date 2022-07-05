@@ -1,0 +1,29 @@
+eğer node modules isimli klasörü silersek 
+    cmd üzerinden >npm install metodunu çağırmalıyız 
+
+>npm list ,ile kurulan module ler görüntülenir
+    --depth=0 ,ile liste derinliği ayarlanır 
+
+npm cache clear --force  ,ile cache temizlenir. indirme hatası alıyorsan deneyebilirsin
+
+npm i paketadi@versiyon
+npm i express@1.5.7
+
+^ işareti minor ve patch olarak en son sürümü ister
+~ işareti patch olarak en son sürümü ister
+
+npm outdated , eski sürüm kontrolü yapar
+
+fund , katkı isteyeen paket var demek
+
+npm update , paketleri günceller işaretlerine göre outdated olan paketleri günceller
+
+npm view , ile paketlerin özeellikleri görüntülenir
+
+npm  uninstall
+
+npm i paketadi --save-dev modülleri developer dependency altına ekler
+
+npm i paketadi -g , modülleri global adrese kaydeder
+
+npm start , ile package.json dosyası içerisindeki start özelliğinde yazan komutu çalıştırır

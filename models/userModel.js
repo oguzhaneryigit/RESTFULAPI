@@ -34,6 +34,10 @@ const   UserSchema = new Schema({
         required:true,
         minlength:4,
         maxlength:500
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
     }
 },{collection:'Users', timestamps:true});
 
@@ -78,7 +82,7 @@ UserSchema.methods.toJSON = function () {
 
 UserSchema.methods.generateToken =async function(){
     const user=this;
-    const token =await jwt.sign({_id:user.id,email:user.email},"cokgizlianahtar",{expiresIn:"1h"});
+    const token =await jwt.sign({username:user.username,_id:user.id,email:user.email,isAdmin:user.isAdmin},"cokgizlianahtar",{expiresIn:"1h"});
     return token ;
 }
 const User = mongoose.model('User',UserSchema);

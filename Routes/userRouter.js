@@ -6,8 +6,11 @@ const User = require("../models/userModel")
 const createError=require("http-errors")
 const bcrypt = require("bcrypt");
 const auth = require('../Middleware/AuthMiddleware');
-//
-router.get('/',async (req,res,next)=>{
+const adminAuth = require('../Middleware/AdminMiddleware');
+
+// api/users
+
+router.get('/',[auth,adminAuth],async (req,res,next)=>{
     try{
         let result = await User.find({});
         res.json({
@@ -116,9 +119,30 @@ router.patch('/:id', async (req,res,next)=>{//run validators olmazsa kuralları 
     
 })
 
-router.delete('/:id',async(req,res,next)=>{
+router.delete('/:id',auth,adminAuth,async(req,res,next)=>{
     try{
-        let result = await User.findByIdAndRemove({_id :req.params.id})
+        console.log(req.user)
+        let result = await User.findByIdAndRemove({_id :req.params.id,isAdmin:false})
+        if(result){  
+            res.json({
+                success:true,
+                message:"user deleted by admin "+req.user.username,
+                data:result
+            })
+        }
+        else{
+            throw createError(404,"user could not found")
+        }  
+    }
+    catch(e){
+        next(e);
+    }
+    
+})
+
+router.delete('/',auth,async(req,res,next)=>{
+    try{
+        let result = await User.findByIdAndRemove({_id :req.user._id})
         if(result){  
             res.json({
                 success:true,

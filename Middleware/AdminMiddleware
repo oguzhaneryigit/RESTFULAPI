@@ -1,0 +1,16 @@
+const createHttpError = require("http-errors");
+const jwt =require("jsonwebtoken")  
+const adminAuth =async (req,res,next)=>{
+    console.log(req.user.isAdmin)
+    if(req.user.isAdmin==false){
+        next(createHttpError(400,"admins only"))
+        // return res.json({
+        //     success:false,
+        //     message:"available for admins",
+        //     data:{}
+        // })
+    }
+    next()
+}
+
+module.exports =adminAuth

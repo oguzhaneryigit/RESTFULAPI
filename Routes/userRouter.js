@@ -1,10 +1,13 @@
 const express=require('express');
+const router = express.Router();
+
 const { default: mongoose } = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
-const router = express.Router();
-const User = require("../models/userModel")
+
 const createError=require("http-errors")
 const bcrypt = require("bcrypt");
+
+const User = require("../models/userModel")
 const auth = require('../Middleware/AuthMiddleware');
 const adminAuth = require('../Middleware/AdminMiddleware');
 
